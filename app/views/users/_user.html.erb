@@ -52,25 +52,31 @@
 
         <% end %>
       </div>
-
       <div>
-        <%=
-          link_to "#",
-            class: "link-underline link-underline-opacity-0 link-underline-opacity-100-hover",
-            data: { 
-              "bs-toggle": "modal", 
-              "bs-target": "##{dom_id(user)}_pending"
-            } do %>
-
-          <span class="font-weight-bold">
-            <%= user.pending.size %>
-          </span>
+            <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-secondary" %>
+          </div>
+      <% if current_user == user %>
           
-          pending
+        <div>
+          <%=
+            link_to "#",
+              class: "link-underline link-underline-opacity-0 link-underline-opacity-100-hover",
+              data: { 
+                "bs-toggle": "modal", 
+                "bs-target": "##{dom_id(user)}_pending"
+              } do %>
 
-        <% end %>
+            <span class="font-weight-bold">
+              <%= user.pending.size %>
+            </span>
+            
+            pending
+
+          <% end %>
+        </div>
+      <% end %>
       </div>
-    </div>
+    
 
     <div class="row mb-3">
       <div class="col">

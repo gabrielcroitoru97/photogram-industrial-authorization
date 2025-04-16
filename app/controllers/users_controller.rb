@@ -5,6 +5,18 @@ class UsersController < ApplicationController
     @users = @q.result
   end
 
+  def show
+    authorize @user
+  end
+
+  def discover
+    authorize @user, :show_personal?
+  end
+
+  def feed
+    authorize @user, :show_personal?
+  end
+
   private
 
     def set_user

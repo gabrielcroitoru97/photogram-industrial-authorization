@@ -152,11 +152,12 @@
     description: "following",
     target: "#{dom_id(user)}_following"
 %>
-
-<%=
-  render "users/connected_users_modal",
-    user: user,
-    connected_users: user.pending,
-    description: "pending",
-    target: "#{dom_id(user)}_pending"
-%>
+<% if current_user== user%>
+  <%=
+    render "users/connected_users_modal",
+      user: user,
+      connected_users: user.pending,
+      description: "pending",
+      target: "#{dom_id(user)}_pending"
+  %>
+<%end%>
